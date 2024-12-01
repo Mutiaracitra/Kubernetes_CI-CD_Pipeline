@@ -16,7 +16,7 @@ steps:
     args:
       - '-c'
       - |
-        gcloud container clusters get-credentials ci-cd-cluster --zone us-east1-b --project grand-analyzer-443203-j6
+        gcloud container clusters get-credentials weekly-cluster --zone us-east1-b --project grand-analyzer-443203-j6
 
   # Deploy to GKE
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
