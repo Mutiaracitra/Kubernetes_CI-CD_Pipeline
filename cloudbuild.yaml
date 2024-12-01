@@ -19,8 +19,8 @@ deploy to cloud GKE
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: 'bash'
     args: 
-    - '-c'
-     |
+    - '-c' 
+    |
      kubectl apply -f kubernetes/deploymen.yaml
      kubectl apply -f kubernetes/service.yaml
 
