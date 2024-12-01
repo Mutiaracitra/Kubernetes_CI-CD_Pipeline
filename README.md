@@ -1,7 +1,3 @@
-Here is a clean and structured documentation for your repository in `README.md` format:
-
----
-
 # **Weekly Kubernetes CI/CD Pipeline Documentation**
 
 ## Introduction
