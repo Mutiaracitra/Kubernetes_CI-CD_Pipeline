@@ -1,28 +1,28 @@
 options:
- logging: CLOUD_LOGGING_ONLY
+  logging: CLOUD_LOGGING_ONLY
 
 steps:
-#build docker image
+  # Build docker image
   - name: 'gcr.io/cloud-builders/docker' # Image prebuilt oleh Google
     args: ['build', '-t', 'gcr.io/grand-analyzer-443203-j6/fastapi-app:latest', '.']
 
-#push image to container registry
+  # Push image to container registry
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', 'gcr.io/grand-analyzer-443203-j6/fastapi-app:latest']
 
-#deploy to cloud run
- # - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-  #  entrypoint: gcloud
-  #  args: ['run', 'deploy', 'fast-api-test', '--image', 'gcr.io/grand-analyzer-443203-j6/fastapi-app:latest', '--region', 'us-central1', '--platform', 'managed', --allow-unauthenticated]
+  # Deploy to Cloud Run (commented out)
+  # - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  #   entrypoint: gcloud
+  #   args: ['run', 'deploy', 'fast-api-test', '--image', 'gcr.io/grand-analyzer-443203-j6/fastapi-app:latest', '--region', 'us-central1', '--platform', 'managed', '--allow-unauthenticated']
 
-deploy to cloud GKE
+  # Deploy to Cloud GKE
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: 'bash'
-    args: 
-    - '-c' 
-    |
-     kubectl apply -f kubernetes/deploymen.yaml
-     kubectl apply -f kubernetes/service.yaml
+    args:
+      - '-c'
+      - |
+        kubectl apply -f kubernetes/deploymen.yaml
+        kubectl apply -f kubernetes/service.yaml
 
 images:
   - 'gcr.io/grand-analyzer-443203-j6/fastapi-app:latest'
