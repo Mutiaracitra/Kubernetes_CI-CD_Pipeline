@@ -15,7 +15,7 @@ products = [
 
 @app.get("/")
 def read_root():
-    return {"message": "Welcome to the Fashion Store!"}
+    return {"message": "Welcome to the Fashion Store versi GKE!"}
 
 @app.get("/products")
 def get_products():
