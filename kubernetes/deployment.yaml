@@ -18,7 +18,7 @@ spec:
       - name: fast-api
         image: gcr.io/grand-analyzer-443203-j6/fastapi-app:latest
         ports:
-        - containerPort: 8080
+        - containerPort: 80
         resources:
           requests:
            cpu: 200m
