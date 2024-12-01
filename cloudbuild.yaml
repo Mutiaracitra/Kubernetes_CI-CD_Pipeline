@@ -9,19 +9,22 @@ steps:
   # Push image to container registry
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', 'gcr.io/grand-analyzer-443203-j6/fastapi-app:latest']
-
-  # Deploy to Cloud Run (commented out)
-  # - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-  #   entrypoint: gcloud
-  #   args: ['run', 'deploy', 'fast-api-test', '--image', 'gcr.io/grand-analyzer-443203-j6/fastapi-app:latest', '--region', 'us-central1', '--platform', 'managed', '--allow-unauthenticated']
-
-  # Deploy to Cloud GKE
+    
+  # Authenticate to GKE
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: 'bash'
     args:
       - '-c'
       - |
-        kubectl apply -f kubernetes/deploymen.yaml
+        gcloud container clusters get-credentials ci-cd-cluster --zone us-east1-b --project grand-analyzer-443203-j6
+
+  # Deploy to GKE
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        kubectl apply -f kubernetes/deployment.yaml
         kubectl apply -f kubernetes/service.yaml
 
 images:
