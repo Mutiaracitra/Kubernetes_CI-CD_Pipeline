@@ -1,4 +1,4 @@
-# **Weekly Kubernetes CI/CD Pipeline Documentation**
+# **Kubernetes CI/CD Pipeline Documentation**
 
 ## Introduction
 This repository contains a fully automated CI/CD pipeline using Google Cloud Platform (GCP) services like Cloud Build, Docker, and Kubernetes Engine. The pipeline automates the process of building, pushing, and deploying a FastAPI application to Google Kubernetes Engine (GKE), utilizing load balancing for scalability.
